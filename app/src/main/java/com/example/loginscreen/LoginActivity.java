@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                         intent.putExtra("username",username);
-                        intent.putExtra("encrypted_password",password);
+                        intent.putExtra("password",password);
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid username or password!", Toast.LENGTH_SHORT).show();
@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                Toast.makeText(LoginActivity.this, "Logged out Successfully!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });

@@ -28,8 +28,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Get the logged-in user's details from Intent
         String username = getIntent().getStringExtra("username");
-        String encryptedPassword = getIntent().getStringExtra("encrypted_password");
-
+        String password = getIntent().getStringExtra("password");
+        String encryptedPassword = "****";
         // Display the user's details
         usernameText.setText("Username: " + username);
         passwordText.setText("Encrypted Password: " + encryptedPassword);
@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
                     isPasswordVisible = false;
                 } else {
                     // Show password
-                    passwordText.setText("Password: " + decryptPassword(encryptedPassword));
+                    passwordText.setText("Password: " + password);
                     displayPasswordButton.setText("Hide Password");
                     isPasswordVisible = true;
                 }
@@ -64,17 +64,4 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private String encryptPassword(String password){
-        try {
-            String encryptedMsg = AESCrypt.encrypt(password, message);
-        }catch (GeneralSecurityException e){
-            //handle error
-        }
-    }
-    // A placeholder for your decryption method
-    private String decryptPassword(String encryptedPassword) {
-        // TODO: Implement your decryption logic here
-        // For now, we'll just return the encrypted password for demonstration
-        return encryptedPassword; // Replace this with actual decryption
-    }
 }
